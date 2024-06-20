@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Khodam</title>
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW7iITd7C_WgR_gIREHN0W1oBMToo-n8MkvgS198dhpq3trO3hiN71Zn7P&s=10');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content h2 {
+            color: black;
+        }
+        .modal-content button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body onload="showPopup()">
+    <div class="container">
+        <h1>Cek Khodam</h1>
+        <input type="text" id="nama" placeholder="Masukkan Nama Anda">
+        <button onclick="cekKhodam()">Cek</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>Follow Instagram @ramzi.alfz</h2>
+            <button onclick="followNow()">Follow Sekarang</button>
+            <button onclick="closeModal()">Nanti</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        function followNow() {
+            window.location.href = "https://www.instagram.com/ramzi.alfz?igsh=MXY2MzR4dXRnZDFieg==";
+        }
+
+        function cekKhodam() {
+            const nama = document.getElementById('nama').value;
+            const khodamList = [
+                "Kopi Item", "Kapibara", "Telor Puyuh", "Sendok Emas", "Kucing Pasar", "Rendang Kentang",
+                "Macan", "Ayam Kuning (Opor)", "Kerapu", "Monyet Itam", "Kura-kura Batu", "Kadal Gurun",
+                "Burung Gagak", "Ikan Paus", "Laba-laba Ungu", "Ular Hijau", "Bebek Angsa", "Singa Laut",
+                "Kuda Terbang", "Kelinci Putih", "Gajah Mini", "Babi Hutan", "Harimau Jawa", "Kerbau Hitam",
+                "Harimau Kecubung", "Selamat Kopling", "Rem Jet", "Singa LPG 3 kg", "Termos Berapi", "Gas Ijo Melon",
+                "Kadal Tempurung", "Kompor Dingin", "Piring Kaca", "Akuarium Pecah", "Arwana Ijo", "Lele Kuning",
+                "Laba-laba Sunda", "Gayung Oren", "Daun Singkong", "Jaket Kulit Kadal", "Buaya Darat", "Roko Kretek",
+                "Gitar Spanyol", "Garam Halus", "Sate Mamat", "Gunung Kembar", "Kodam kosong"
+            ];
+            const khodam = khodamList[Math.floor(Math.random() * khodamList.length)];
+
+            const originList = [
+                "berasal dari leluhur", "teman dari kecil", "ilmu hitam", "taman baru", "pelindung",
+                "teman makan", "orang tua", "musuh bebuyutan", "teman khayalan", "guru spiritual",
+                "penunggu rumah", "teman arwah", "penjaga malam", "penunggu pohon", "roh gunung",
+                "penunggu sungai", "arwah penasaran", "jimat warisan", "roh penjaga desa", "makhluk gaib",
+                "arwah pendamping", "penunggu hutan", "arwah penjaga pantai", "penunggu rumah kosong"
+            ];
+            const origin = khodam === "Kodam kosong" ? "cari dulu" : originList[Math.floor(Math.random() * originList.length)];
+
+            document.getElementById('output').innerText = `Khodam kamu adalah ${khodam}, berasal ${origin}`;
+        }
+    </script>
+</body>
+</html>
